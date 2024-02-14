@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Subcircuitos Policiales</h1>
+    <a href="{% url 'agregar_subcircuito' %}">Agregar Nuevo Subcircuito</a>
+    <ul>
+        {% for subcircuito in subcircuitos %}
+            <li>
+               Subcircuito {{ subcircuito.Nombre_subcircuito }} Codigo {{ subcircuito.Codigo_subcircuito }} - {{ subcircuito.Subcircuito }}
+                <a href="{% url 'editar_subcircuito' subcircuito.id %}">Editar</a>
+                <a href="{% url 'eliminar_subcircuito' subcircuito.id %}">Eliminar</a>
+            </li>
+
+            
+           
+        {% endfor %}
+    </ul>
+    <a href="{% url 'inicio' %}">Volver al menú principal</a>
+
+    {% endblock %}

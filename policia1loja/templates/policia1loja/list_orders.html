@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<h2>Lista de Órdenes de Combustible</h2>
+<ul>
+    {% for order in orders %}
+    <li>
+        Orden de {{ order.vehiculo }} - {{ order.Fecha }}
+        <a href="{% url 'update_order' order.id %}">Editar</a>
+        <a href="{% url 'delete_order' order.id %}">Eliminar</a>
+    </li>
+    {% empty %}
+    <li>No hay órdenes de combustible por ahora, ingrese una orden.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'create_order' %}">Crear Nueva Orden</a>
+{% endblock %}

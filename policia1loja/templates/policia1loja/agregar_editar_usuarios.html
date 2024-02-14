@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <title>{% if usuario %}Editar{% else %}Agregar{% endif %} Usuario</title>
+
+    <h1>{% if usuario %}Editar{% else %}Agregar{% endif %} Usuario Policial</h1>
+   
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <form method="post" action="{% url 'agregar_usuario' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+    
+    <a href="{% url 'lista_usuarios' %}">Volver a la lista</a>
+{% endblock %}
+

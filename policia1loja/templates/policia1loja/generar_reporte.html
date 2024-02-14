@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Generar Reporte</title>
+</head>
+<body>
+    <h1>Generar Reporte</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Generar Reporte</button>
+    </form>
+</body>
+{% endblock %}

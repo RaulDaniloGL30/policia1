@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <title>Lista de Mantenimientos Preventivos</title>
+</head>
+<body>
+    <h1>Mantenimientos Preventivos</h1>
+
+    <table>
+        <tr>
+            <th>Vehículo</th>
+            <th>Usuario Policial</th>
+            <th>Fecha y Hora de Ingreso</th>
+            <th>Kilometraje Actual</th>
+            <th>Tipo de Mantenimiento</th>
+            <th>Subtotal</th>
+            <th>IVA</th>
+            <th>Total</th>
+            <!-- Agrega más columnas si es necesario -->
+        </tr>
+
+        {% for mantenimiento in mantenimientos %}
+        <tr>
+            <td>{{ mantenimiento.Vehiculo.Placa }}</td>
+            <td>{{ mantenimiento.Usuario_Policial.nombres }} {{ mantenimiento.usuario_policial.apellidos }}</td>
+            <td>{{ mantenimiento.fecha_hora_ingreso }}</td>
+            <td>{{ mantenimiento.kilometraje_actual }}</td>
+            <td>{{ mantenimiento.get_tipo_mantenimiento_display }}</td>
+            <td>{{ mantenimiento.subtotal }}</td>
+            <td>{{ mantenimiento.iva }}</td>
+            <td>{{ mantenimiento.total }}</td>
+            <!-- Agrega más celdas si es necesario -->
+        </tr>
+        <td>
+            <!-- Botón de Descargar (puede ser un enlace a una vista que genere un PDF) -->
+            <a href="{% url 'descargar_orden' mantenimiento.id %}">Descargar</a>
+
+        </td>
+        <td>
+            <!-- Botón de Imprimir (puede ser un JavaScript para imprimir la página) -->
+            <a href="#" onclick="window.print();">Imprimir</a>
+        </td>
+        <td>
+            <!-- Botón de Finalizar (puede ser un enlace a una vista que marque el mantenimiento como finalizado) -->
+            <a href="{% url 'finalizar_mantenimiento' mantenimiento.id %}">Finalizar</a>
+            
+        </td>
+        {% empty %}
+        
+        <tr>
+            <td colspan="8">No hay mantenimientos registrados.</td>
+        </tr>
+        {% endfor %}
+    </table>
+   
+</body>
+{% endblock %}
+
+
+

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <title>Asignar Subcircuito</title>
+</head>
+<body>
+    <h1>Asignar Subcircuito a {{ usuario.nombres }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Asignar Subcircuito</button>
+    </form>
+    <a href="{% url 'lista_usuarios' %}">Volver a la lista de usuarios</a>
+</body>
+
+{% endblock %}

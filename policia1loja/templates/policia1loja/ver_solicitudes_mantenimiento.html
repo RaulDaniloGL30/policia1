@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+    <title>Ver Solicitudes de Mantenimiento</title>
+</head>
+<body>
+    <h1>Solicitudes de Mantenimiento</h1>
+
+    <table>
+        <tr>
+            <th>Usuario Policial</th>
+            <th>Vehículo</th>
+            <th>Fecha y Hora</th>
+            <th>Kilometraje</th>
+            <th>Observaciones</th>
+        </tr>
+        {% for solicitud in solicitudes %}
+        <tr>
+            <td>{{ solicitud.Usuario_Policial.nombres }} {{ solicitud.Usuario_Policial.apellidos }}</td>
+            <td>{{ solicitud.Vehiculo.Placa }}</td>
+            <td>{{ solicitud.fecha_hora }}</td>
+            <td>{{ solicitud.kilometraje_actual }}</td>
+            <td>{{ solicitud.observaciones }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No hay solicitudes de mantenimiento.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock %}

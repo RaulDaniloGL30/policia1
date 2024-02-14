@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+    <title>Lista de vehiculos</title>
+</head>
+<body>
+    <h1>Vehiculos Policiales</h1>
+    <a href="{% url 'agregar_vehiculo' %}">Agregar Nuevo Vehículo</a>
+    <ul>
+        {% for vehiculo in vehiculos %}
+            <li>
+               Vehiculo {{ vehiculo.Tipo_Vehiculo }} Placa {{ vehiculo.Placa }} - {{ vehiculo.Vehiculo }}
+                <a href="{% url 'editar_vehiculo' vehiculo.id %}">Editar</a>
+                <a href="{% url 'eliminar_vehiculo' vehiculo.id %}">Eliminar</a>
+            </li>
+
+            
+          
+        {% endfor %}
+        <a href="{% url 'inicio' %}">Volver al menú principal</a>
+    </ul>
+</body>
+{% endblock %}

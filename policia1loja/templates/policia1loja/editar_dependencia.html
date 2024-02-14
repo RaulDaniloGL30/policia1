@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Editar Dependencia</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Actualizar Dependencia</button>
+    </form>
+    <a href="{% url 'lista_subcircuitos' %}">Cancelar y volver a la lista</a>
+{% endblock %}

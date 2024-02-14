@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+    <title>Lista de Usuarios Policiales</title>
+</head>
+<body>
+    
+    <h1>Usuarios Policiales</h1>
+    <a href="{% url 'agregar_usuario' %}">Agregar Nuevo Usuario</a>
+
+    <table>
+        <tr>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <!-- Añade más encabezados si necesitas -->
+            <th>Acciones</th>
+        </tr>
+        
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.nombres }}</td>
+            <td>{{ usuario.apellidos }}</td>
+            <!-- Añade más celdas si necesitas -->
+            <td>
+                <a href="{% url 'editar_usuario' usuario.id %}">Editar</a> |
+                <a href="{% url 'eliminar_usuario' usuario.id %}">Eliminar</a>
+                <a href="{% url 'asignar_subcircuitos' usuario_id=usuario.id %}">Asignar Subcircuito</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No se encontraron usuarios policiales.</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <a href="{% url 'inicio' %}">Volver al menú principal</a>
+</body>
+
+{% endblock %}

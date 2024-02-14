@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <title>Crear Solicitud de Mantenimiento</title>
+</head>
+<body>
+    <h1>Crear Solicitud de Mantenimiento</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar Solicitud</button>
+    </form>
+</body>
+{% endblock %}
